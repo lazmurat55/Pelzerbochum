@@ -200,7 +200,6 @@ const codeData = {
     }
 };
 
-// İNGİLİZCE AYLARI VE GÜNLERİ SAF ALMANCAYA ÇEVİREN SİHİRLİ DİL MOTORU
 function formatGermanDateString(rawDateStr) {
     if(!rawDateStr) return "-";
     let str = String(rawDateStr);
@@ -215,12 +214,22 @@ function formatGermanDateString(rawDateStr) {
     return str;
 }
 
+// SAYFA YÜKLENDİĞİ AN BUGÜNÜN TARİHİNİ ATAYAN KESİN METOT
+function setInitialTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const inputEl = document.getElementById('datum');
+    if (inputEl) {
+        inputEl.value = `${year}-${month}-${day}`;
+    }
+}
+
 async function checkLogin() {
     const btn = document.getElementById('loginBtn'); const u = document.getElementById('userInp').value.trim(); const p = document.getElementById('passInp').value.trim();
     if(!initialDB[u]) { document.getElementById('loginError').innerText = "⚠️ Benutzer nicht gefunden!"; document.getElementById('loginError').style.display = 'block'; return; }
     btn.innerText = "Check... ⏳"; document.getElementById('loginError').style.display = 'none';
-    
-    // Giriş kontrol kilitlerini tamamen açan yeni hafifletilmiş bulut motoru
     try {
         const response = await fetch(scriptURL); 
         const cloudDB = await response.json();
@@ -256,6 +265,9 @@ async function enterApp(u) {
     document.getElementById('loginScreen').style.display='none'; 
     document.getElementById('setPassScreen').style.display='none'; 
     
+    // Uygulama her açıldığında tarihi bugüne sabitler
+    setInitialTodayDate();
+
     try {
         const res = await fetch(scriptURL + "?action=getReports");
         const data = await res.json();
@@ -311,9 +323,7 @@ async function loadAdminDashboard() {
         }
 
         container.innerHTML = reports.map(r => {
-            // Tarih bilgisini Almancaya çeviren filtreyi çağırıyoruz
             let germanFormattedDate = formatGermanDateString(r.date);
-            
             return `
                 <div class="report-box">
                     <span class="badge-origin">${r.origin}</span>
@@ -351,12 +361,12 @@ function setSchicht(s) {
     selectedStaff=[]; 
     renderStaff(); 
     
-    // BUTONLARIN EKRANDA KAYBOLMASINI %100 BİTİREN EMİN ATAMA BLOKLARI
     if (s === "A") setSchichtType('Frühschicht');
     else if (s === "B") setSchichtType('Spätschicht');
     else if (s === "C") setSchichtType('Nachtschicht');
 }
 
+// BUTON KİLİTLERİNİ TAMAMEN KIRAN YENİ GELİŞTİRİLMİŞ ATAMA SİHRİ
 function setSchichtType(type) { 
     currentSchichtType = type; 
     document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active')); 

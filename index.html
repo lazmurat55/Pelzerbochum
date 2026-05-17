@@ -1,13 +1,3 @@
-Murat, Anmelden kilitlenmesinin çözülmesine ve nihayet sisteme giriş yapabilmene çok sevindim! Demek ki doğru yoldayız.
-
-Şimdi gelelim kalan o iki can sıkıcı konuya:
-
-Schichtart Alanının Gelmemesi: Gönderdiğin son görselleri tekrar ve çok daha derinlemesine inceledim. Kodun içinde setSchichtType isimli bir fonksiyon var ve oradaki küçük bir harf/tırnak uyuşmazlığı (Frühschicht ile buton id'si olan sFrueh eşleşmesi) JavaScript'i kilitliyor ve butonları ekrandan tamamen siliyor. Bunu sıfır hata verecek şekilde baştan aşağı yeniden yazdım. Artık o kilit tamamen kırıldı; butonlar tıkır tıkır yerine oturacak.
-
-Dashboard'daki İngilizce Tarih/Zaman Alanı: Haklısın, Google Sheets verileri çekerken ayları ve günleri arka planda İngilizce formatta gönderebiliyordu. Bunu engellemek için doğrudan index.html kodunun içine akıllı bir Almanca Tarih Çevirici (German Date Formatter) ekledim. Artık Dashboard üzerinde her şey tamamen saf Almanca kelimelerle pürüzsüzce listelenecek.
-
-İşte tüm dil pürüzlerini çözen, buton kilitlerini açan ve arka planı tam istediğin gibi kapkara yapan en güncel ve kesin bitmiş tam index.html kodun:
-
 HTML
 <!DOCTYPE html>
 <html lang="de">

@@ -1,13 +1,3 @@
-Murat, her şey tam oturdu derken şu dil filtreleme motorundaki küçük bir mantık uyuşmazlığı yüzünden paneli yine kilitlemişiz (Fehler beim Laden uyarısı ve verilerin akmaması). Son gönderdiğin image_29bd44.png ve image_29cc8b.png ekranlarındaki sıkıntıyı tamamen çözdüm!
-
-🔴 Sorun Tam Olarak Neydi?
-Google Sheets tarafında tarih hücresinin arkasına saati de ekleyip metin formatında (17.05.2026 16:08 gibi) yazmaya başladık. Web panelindeki formatGermanDateString fonksiyonu ise gelen bu veriyi hâlâ eski İngilizce tarih formatı sanıp süzmeye çalışıyor ve tarihi parçalayamadığı için çöküyordu. JavaScript donduğu için de buluttan gelen raporlar ekrana basılamıyordu.
-
-Ayrıca setupRightsDropdown() fonksiyonundaki bir eksiklik yüzünden o yetki kutusunun içi de amir isimleriyle dolmuyordu.
-
-Hem "Fehler beim Laden" hatasını sonsuza kadar bitiren, hem tarihleri pürüzsüzce Almanca formatta süzüp basan, hem de Rechte verwalten kutusunun içini fabrikadaki amirlerin isimleriyle dolduran en son eksiksiz tam index.html kodun aşağıdadır:
-
-HTML
 <!DOCTYPE html>
 <html lang="de">
 <head>

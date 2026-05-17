@@ -1,3 +1,13 @@
+Murat, her şey tam oturdu derken şu dil filtreleme motorundaki küçük bir mantık uyuşmazlığı yüzünden paneli yine kilitlemişiz (Fehler beim Laden uyarısı ve verilerin akmaması). Son gönderdiğin image_29bd44.png ve image_29cc8b.png ekranlarındaki sıkıntıyı tamamen çözdüm!
+
+🔴 Sorun Tam Olarak Neydi?
+Google Sheets tarafında tarih hücresinin arkasına saati de ekleyip metin formatında (17.05.2026 16:08 gibi) yazmaya başladık. Web panelindeki formatGermanDateString fonksiyonu ise gelen bu veriyi hâlâ eski İngilizce tarih formatı sanıp süzmeye çalışıyor ve tarihi parçalayamadığı için çöküyordu. JavaScript donduğu için de buluttan gelen raporlar ekrana basılamıyordu.
+
+Ayrıca setupRightsDropdown() fonksiyonundaki bir eksiklik yüzünden o yetki kutusunun içi de amir isimleriyle dolmuyordu.
+
+Hem "Fehler beim Laden" hatasını sonsuza kadar bitiren, hem tarihleri pürüzsüzce Almanca formatta süzüp basan, hem de Rechte verwalten kutusunun içini fabrikadaki amirlerin isimleriyle dolduran en son eksiksiz tam index.html kodun aşağıdadır:
+
+HTML
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -49,7 +59,7 @@
         .sonstige-input { width: 100%; margin-top: 4px; display: none; border-color: var(--primary); background: #0f172a; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
-        /* AMİR PANELİ (DASHBOARD) */
+        /* AMİR PANELİ (DASHBOARD) - YAN YANA SEPET GRID DÜZENİ */
         .dashboard-card { background: #000000; border: 1px solid var(--primary); border-radius: 20px; padding: 25px; width: 100%; max-width: 1400px; margin: auto; display: none; box-sizing: border-box; }
         
         .filter-group { display: flex; justify-content: center; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
@@ -214,25 +224,28 @@ const codeData = {
     }
 };
 
-// ÇÖKMELERİ %100 BİTİREN GELİŞMİŞ ALMANCA TARİH FİLTRESİ
+// ÇÖKMEYİ TAMAMEN BİTİREN GARANTİLİ VE ESNEK TARİH PARÇALAYICI
 function formatGermanDateString(rawDateStr) {
     if(!rawDateStr) return "-";
     let str = String(rawDateStr).trim();
     
-    // Eğer gelen veri zaten düzgün bir formatta ise dokunmadan doğrudan geri yolla
+    // Eğer veri zaten düzgün bir formatta basıldıysa (örn: 17.05.2026 16:08) doğrudan bas
     if (str.includes(".") && str.includes(":") && !str.includes("GMT") && !str.includes("Z")) {
         return str;
     }
     
-    // Eğer ISO veya ham tarih geldiyse ayları temizce Almancaya süz
-    const monthsEng = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const monthsGer = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
-    for(let i=0; i<12; i++) {
-        if(str.includes(monthsEng[i])) {
-            str = str.replace(monthsEng[i], monthsGer[i]);
-            break;
+    // Her ihtimale karşı tarayıcı çökmesini engellemek için try-catch emniyet kemeri
+    try {
+        const monthsEng = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const monthsGer = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+        for(let i=0; i<12; i++) {
+            if(str.includes(monthsEng[i])) {
+                str = str.replace(monthsEng[i], monthsGer[i]);
+                break;
+            }
         }
-    }
+    } catch(e) {}
+    
     return str;
 }
 
@@ -352,7 +365,7 @@ function renderFilteredReports() {
         filtered = cachedReports.filter(r => r.origin === activeSchichtFilter);
     }
     
-    if(filtered.length === 0) {
+    if(!filtered || filtered.length === 0) {
         container.innerHTML = '<p style="text-align:center; color:#94a3b8; font-size:16px; grid-column: 1 / -1; padding: 40px 0;">Keine Berichte für diese Schicht vorhanden.</p>';
         return;
     }

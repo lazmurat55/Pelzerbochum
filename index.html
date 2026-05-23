@@ -253,25 +253,35 @@
 
                 <div style="display:flex;gap:8px;">
 
-                    <select id="schichtleiterSelect"
-        style="width:100%; min-width:260px;">
-                    <select id="schichtSelect"
-                            style="max-width:80px;">
+                    <div class="schicht-box">
 
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
+    <label>
+        Rechte verwalten (Schichtleiter)
+    </label>
 
-                    </select>
+    <div style="display:flex;gap:8px;">
 
-                    <button class="sub-btn"
-                            onclick="saveSchichtleiter()">
-                        +
-                    </button>
+        <select id="schichtleiterSelect"
+                style="width:100%; min-width:260px;">
+        </select>
 
-                </div>
+        <select id="schichtSelect"
+                style="max-width:80px;">
 
-            </div>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+
+        </select>
+
+        <button class="sub-btn"
+                onclick="saveSchichtleiter()">
+            +
+        </button>
+
+    </div>
+
+</div>
 
         </div>
 

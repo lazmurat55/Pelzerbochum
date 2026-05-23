@@ -261,29 +261,18 @@
     <button id="mainSendBtn" class="main-btn" onclick="processReport()">🚀 SPEICHERN & SENDEN</button>
 </div>
 
-<div class="dashboard-card" id="adminPanel" style="padding: 15px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.4); background: #0f172a; margin-bottom: 15px;">
-    
-    <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
-        <div style="flex: 1;">
-            <h2 style="margin: 0; font-size: 20px; color: white;">APK Live Dashboard</h2>
-            <div style="border: 1px solid #22c55e; padding: 5px 10px; border-radius: 5px; display: inline-block; background: rgba(34, 197, 94, 0.1); margin-top: 5px; color: #22c55e; font-weight: bold; font-size: 13px;">
-                WILLCOM KESKIN
-            </div>
-        </div>
-
-        <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
-            <div style="display: flex; gap: 5px;">
-                <select id="rightsSelect" style="flex: 1; height: 30px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 4px; font-size: 11px;"></select>
-                <button class="sub-btn" style="width: 60px; height: 30px;" onclick="grantSuperManagerRights()">YETKİ</button>
-            </div>
-            <div style="display: flex; gap: 5px;">
-                <select id="schichtleiterSelect" style="flex: 1; height: 30px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 4px; font-size: 11px;"></select>
-                <select id="schichtSelect" style="width: 40px; height: 30px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 4px; text-align: center;">
-                    <option value="A">A</option><option value="B">B</option><option value="C">C</option>
-                </select>
-            </div>
-        </div>
+<div class="dashboard-card" style="padding: 15px; border: 1px solid #38bdf8; background: #0f172a;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="color: white; margin: 0;">APK Dashboard</h2>
+        <div style="color: #22c55e; font-weight: bold; border: 1px solid #22c55e; padding: 5px;">WILLCOM KESKIN</div>
     </div>
+    <div style="margin-top: 15px; display: flex; gap: 10px;">
+        <button onclick="filterSchicht('ALLE')">ALLE</button>
+        <div id="dashboardLoading" style="color: #38bdf8;">Berichte laden...</div>
+        <button onclick="loadAdminDashboard()">🔄</button>
+    </div>
+</div>
+<div id="reportsContainer"></div>
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;">
         <div class="filter-buttons" style="margin: 0; display: flex; gap: 3px;">

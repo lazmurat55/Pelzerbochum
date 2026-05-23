@@ -491,7 +491,15 @@ async function loadAdminDashboard() {
     try {
         const response = await fetch(scriptURL + "?action=getReports");
         const data = await response.json();
-        const reports = data.reports;
+        let reports = data.reports;
+
+if(activeDashboardFilter !== 'ALLE'){
+
+    reports = reports.filter(r =>
+        r.origin.startsWith(activeDashboardFilter)
+    );
+
+}
         document.getElementById('dashboardLoading').style.display = 'none';
         
         if(!reports || reports.length === 0) {

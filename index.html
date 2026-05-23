@@ -261,21 +261,21 @@
     <button id="mainSendBtn" class="main-btn" onclick="processReport()">🚀 SPEICHERN & SENDEN</button>
 </div>
 
-<div class="dashboard-card" id="adminPanel" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.4); background: #0f172a; margin-bottom: 20px;">
+<div class="dashboard-card" id="adminPanel" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.4); background: #0f172a; margin-top: 20px;">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div>
             <h1 style="margin: 0; font-size: 28px; color: white;">APK Live Dashboard</h1>
             <span id="adminUserDisplay" style="color: var(--primary); font-size: 14px; font-weight: bold;">Willkommen, Keskin (Admin Mode)</span>
         </div>
-        <div style="display: flex; gap: 10px;">
-            <div class="filter-buttons" style="margin: 0;">
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <div class="filter-buttons" style="margin: 0; display: flex; gap: 8px;">
                 <button class="schicht-btn active" id="btnAlle" onclick="filterSchicht('ALLE')">ALLE</button>
                 <button class="schicht-btn" id="btnAFilter" onclick="filterSchicht('A')">A</button>
                 <button class="schicht-btn" id="btnBFilter" onclick="filterSchicht('B')">B</button>
                 <button class="schicht-btn" id="btnCFilter" onclick="filterSchicht('C')">C</button>
             </div>
-            <button class="main-btn" style="width: auto; margin: 0; padding: 0 20px;" onclick="loadAdminDashboard()">
-                AKTUALISIEREN
+            <button class="main-btn" style="width: auto; margin: 0; padding: 10px 20px; height: auto;" onclick="loadAdminDashboard()">
+                🔄 AKTUALISIEREN
             </button>
         </div>
     </div>
@@ -284,7 +284,7 @@
     </div>
 </div>
 
-<div id="reportsContainer" class="reports-grid"></div>
+<div id="reportsContainer" class="reports-grid" style="padding: 20px;"></div>
     <div id="dashboardLoading" style="text-align: center; padding: 10px; color: #38bdf8;">Laden... ⏳</div>
     <div id="reportsContainer" style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;"></div>
 </body>

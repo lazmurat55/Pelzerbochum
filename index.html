@@ -263,37 +263,67 @@
 
 <div class="dashboard-card" id="adminPanel" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.4); background: #0f172a; margin-bottom: 20px;">
 
-    <div style="display: flex; gap: 20px; align-items: stretch; min-height: 140px;">
+    <div style="display: flex; gap: 25px; align-items: stretch; min-height: 150px;">
         
         <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-                <h1 style="margin: 0; font-size: 28px; color: white;">APK Live Dashboard</h1>
-                <span id="adminUserDisplay" style="color: var(--primary); font-size: 12px; font-weight: bold; opacity: 0.8;">Willkommen, Keskin (Admin Mode)</span>
+                <h1 style="margin: 0; font-size: 32px; color: white;">APK Live Dashboard</h1>
+                <span id="adminUserDisplay" style="color: var(--primary); font-size: 13px; font-weight: bold; opacity: 0.9;">Willkommen, Keskin (Admin Mode)</span>
             </div>
-            <div style="border: 1px solid var(--success); padding: 10px; border-radius: 6px; text-align: center; background: rgba(34, 197, 94, 0.05);">
-                <strong style="color: var(--success); font-size: 14px; letter-spacing: 1px;">WILLCOM KESKIN</strong>
+            
+            <div style="border: 1px solid var(--success); padding: 12px; border-radius: 8px; text-align: center; background: rgba(34, 197, 94, 0.05); margin-top: 15px;">
+                <strong style="color: var(--success); font-size: 15px; letter-spacing: 1px;">WILLCOM KESKIN</strong>
             </div>
         </div>
 
-        <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid #334155; padding: 10px; border-radius: 8px;">
-                <label style="color: var(--primary); font-size: 10px; font-weight: bold; display: block; margin-bottom: 4px;">SUPER-MANAGER YETKİ</label>
-                <div style="display: flex; gap: 6px;">
-                    <select id="rightsSelect" style="height: 36px; flex: 1; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 4px; padding-left: 8px;"></select>
-                    <button class="main-btn" style="width: 90px; height: 36px; margin: 0; font-size: 10px;" onclick="grantSuperManagerRights()">YETKİ VER</button>
+        <div style="flex: 1.2; display: flex; flex-direction: column; gap: 10px;">
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid #334155; padding: 12px; border-radius: 10px;">
+                <label style="color: var(--primary); font-size: 10px; font-weight: bold; display: block; margin-bottom: 6px; text-transform: uppercase;">Super-Manager Yetki</label>
+                <div style="display: flex; gap: 8px;">
+                    <select id="rightsSelect" style="height: 40px; flex: 1; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 6px; padding-left: 10px;"></select>
+                    <button class="main-btn" style="width: 100px; height: 40px; margin: 0; font-size: 11px; font-weight: bold;" onclick="grantSuperManagerRights()">YETKİ VER</button>
                 </div>
             </div>
-            <div style="background: rgba(56, 189, 248, 0.02); border: 1px solid rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px;">
-                <label style="color: var(--primary); font-size: 10px; font-weight: bold; display: block; margin-bottom: 4px;">SCHICHTLEITER ATAMA</label>
-                <div style="display: flex; gap: 6px;">
-                    <select id="schichtleiterSelect" style="height: 36px; flex: 1; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 4px; padding-left: 8px;"></select>
-                    <select id="schichtSelect" style="width: 50px; height: 36px; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 4px; text-align: center; font-weight: bold;">
-                        <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+
+            <div style="background: rgba(56, 189, 248, 0.02); border: 1px solid rgba(56, 189, 248, 0.2); padding: 12px; border-radius: 10px;">
+                <label style="color: var(--primary); font-size: 10px; font-weight: bold; display: block; margin-bottom: 6px; text-transform: uppercase;">Schichtleiter Atama</label>
+                <div style="display: flex; gap: 8px;">
+                    <select id="schichtleiterSelect" style="height: 40px; flex: 1; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 6px; padding-left: 10px;"></select>
+                    <select id="schichtSelect" style="width: 60px; height: 40px; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 6px; text-align: center; font-weight: bold; font-size: 14px;">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
                     </select>
                 </div>
             </div>
         </div>
     </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding-top: 15px; border-top: 1px solid #334155;">
+        <div style="flex: 1; display: flex; gap: 8px; align-items: center;">
+            <span style="color: #64748b; font-size: 11px; font-weight: bold;">FILTER:</span>
+            <div class="filter-buttons" style="margin: 0; display: flex; gap: 5px;">
+                <button class="schicht-btn active" id="btnAlle" style="padding: 5px 12px; font-size: 11px;" onclick="filterSchicht('ALLE')">ALLE</button>
+                <button class="schicht-btn" id="btnAFilter" style="padding: 5px 10px; font-size: 11px;" onclick="filterSchicht('A')">A</button>
+                <button class="schicht-btn" id="btnBFilter" style="padding: 5px 10px; font-size: 11px;" onclick="filterSchicht('B')">B</button>
+                <button class="schicht-btn" id="btnCFilter" style="padding: 5px 10px; font-size: 11px;" onclick="filterSchicht('C')">C</button>
+            </div>
+        </div>
+
+        <div id="dashboardLoading" style="flex: 1.5; text-align: center; color: var(--primary); font-size: 14px; font-weight: bold;">
+            Berichte werden geladen... ⏳
+        </div>
+
+        <div style="flex: 1; text-align: right;">
+            <button class="main-btn" style="width: auto; margin: 0; padding: 0 20px; height: 38px; font-size: 12px; font-weight: bold;" onclick="loadAdminDashboard()">
+                🔄 AKTUALISIEREN
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<div id="reportsContainer" class="reports-grid"></div>
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 10px; border-top: 1px solid #334155;">
         <div style="display: flex; gap: 8px; align-items: center; width: 30%;">

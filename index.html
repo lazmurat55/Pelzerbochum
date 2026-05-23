@@ -301,6 +301,44 @@
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding-top: 15px; border-top: 1px solid #334155;">
         <div style="flex: 1; display: flex; gap: 8px; align-items: center;">
+            <div class="filter-buttons" style="margin: 0; display: flex; gap: 5px;">
+                <button class="schicht-btn active" id="btnAlle" style="padding: 5px 12px; font-size: 11px;" onclick="filterSchicht('ALLE')">ALLE</button>
+                <button class="schicht-btn" id="btnAFilter" style="padding: 5px 10px; font-size: 11px;" onclick="filterSchicht('A')">A</button>
+                <button class="schicht-btn" id="btnBFilter" style="padding: 5px 10px; font-size: 11px;" onclick="filterSchicht('B')">B</button>
+                <button class="schicht-btn" id="btnCFilter" style="padding: 5px 10px; font-size: 11px;" onclick="filterSchicht('C')">C</button>
+            </div>
+        </div>
+
+        <div id="dashboardLoading" style="flex: 1.5; text-align: center; color: var(--primary); font-size: 14px; font-weight: bold;">
+            Berichte werden geladen... ⏳
+        </div>
+
+        <div style="flex: 1; text-align: right;">
+            <button class="main-btn" style="width: auto; margin: 0; padding: 0 20px; height: 38px; font-size: 12px; font-weight: bold;" onclick="loadAdminDashboard()">
+                🔄 AKTUALISIEREN
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="reportsContainer" class="reports-grid"></div>
+
+            <div style="background: rgba(56, 189, 248, 0.02); border: 1px solid rgba(56, 189, 248, 0.2); padding: 12px; border-radius: 10px;">
+                <label style="color: var(--primary); font-size: 10px; font-weight: bold; display: block; margin-bottom: 6px; text-transform: uppercase;">Schichtleiter Atama</label>
+                <div style="display: flex; gap: 8px;">
+                    <select id="schichtleiterSelect" style="height: 40px; flex: 1; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 6px; padding-left: 10px;"></select>
+                    <select id="schichtSelect" style="width: 60px; height: 40px; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 6px; text-align: center; font-weight: bold; font-size: 14px;">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding-top: 15px; border-top: 1px solid #334155;">
+        <div style="flex: 1; display: flex; gap: 8px; align-items: center;">
             <span style="color: #64748b; font-size: 11px; font-weight: bold;">FILTER:</span>
             <div class="filter-buttons" style="margin: 0; display: flex; gap: 5px;">
                 <button class="schicht-btn active" id="btnAlle" style="padding: 5px 12px; font-size: 11px;" onclick="filterSchicht('ALLE')">ALLE</button>

@@ -261,17 +261,16 @@
     <button id="mainSendBtn" class="main-btn" onclick="processReport()">🚀 SPEICHERN & SENDEN</button>
 </div>
 
-<div class="dashboard-card" style="padding: 15px; border: 1px solid #38bdf8; background: #0f172a;">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h2 style="color: white; margin: 0;">APK Dashboard</h2>
-        <div style="color: #22c55e; font-weight: bold; border: 1px solid #22c55e; padding: 5px;">WILLCOM KESKIN</div>
-    </div>
-    <div style="margin-top: 15px; display: flex; gap: 10px;">
-        <button onclick="filterSchicht('ALLE')">ALLE</button>
-        <div id="dashboardLoading" style="color: #38bdf8;">Berichte laden...</div>
-        <button onclick="loadAdminDashboard()">🔄</button>
+<div id="adminPanel" style="padding: 20px; background: #0f172a; border-bottom: 2px solid #38bdf8;">
+    <h2 style="color: white; margin: 0;">APK Live Dashboard | <span style="color: #22c55e;">WILLCOM KESKIN</span></h2>
+    <div style="margin-top: 15px; display: flex; gap: 10px; align-items: center;">
+        <button onclick="filterSchicht('ALLE')" style="background: #38bdf8; color: black; border: none; padding: 5px 15px; cursor: pointer;">ALLE</button>
+        <div id="dashboardLoading" style="color: #38bdf8; font-weight: bold;">Laden... ⏳</div>
+        <button onclick="loadAdminDashboard()" style="background: #334155; color: white; border: 1px solid #475569; padding: 5px 15px; cursor: pointer;">🔄 GÜNCELLE</button>
     </div>
 </div>
+
+<div id="reportsContainer" class="reports-grid" style="padding: 20px;"></div>
 <div id="reportsContainer"></div>
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;">

@@ -535,7 +535,28 @@ if(activeDashboardFilter !== 'ALLE'){
         container.innerHTML = '<p style="text-align:center; color:var(--danger); font-size:16px;">❌ Fehler beim Laden.</p>';
     }
 }
+function filterSchicht(s){
 
+    activeDashboardFilter=s;
+
+    document.querySelectorAll('.filter-buttons .schicht-btn')
+    .forEach(btn=>btn.classList.remove('active'));
+
+    if(s==='ALLE')
+        document.getElementById('btnAlle').classList.add('active');
+
+    if(s==='A')
+        document.getElementById('btnAFilter').classList.add('active');
+
+    if(s==='B')
+        document.getElementById('btnBFilter').classList.add('active');
+
+    if(s==='C')
+        document.getElementById('btnCFilter').classList.add('active');
+
+    loadAdminDashboard();
+
+}
 function setSchicht(s) { 
     currentSchicht = s; 
     document.querySelectorAll('.schicht-group .schicht-btn').forEach(b => { 

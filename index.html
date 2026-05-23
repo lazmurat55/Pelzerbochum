@@ -63,12 +63,11 @@
 }
 
 .top-admin-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-bottom:20px;
+    display:grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap:20px;
+    align-items:start;
+    margin-bottom:15px;
 }
 
 .admin-left{
@@ -78,9 +77,9 @@
 }
 
 .admin-right{
-    display:flex;
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:12px;
-    flex-wrap:wrap;
 }
 
 .manager-box,
@@ -89,7 +88,7 @@
     border:1px solid rgba(56,189,248,0.25);
     border-radius:14px;
     padding:10px;
-    min-width:260px;
+    width:100%;
 }
 
 .filter-buttons{

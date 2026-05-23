@@ -261,14 +261,30 @@
     <button id="mainSendBtn" class="main-btn" onclick="processReport()">🚀 SPEICHERN & SENDEN</button>
 </div>
 
-<body style="background: #020617; color: white; font-family: sans-serif; margin: 0;">
-    <div style="padding: 20px; background: #0f172a; border-bottom: 2px solid #38bdf8; display: flex; justify-content: space-between; align-items: center;">
-        <h1 style="margin: 0; font-size: 20px;">APK DASHBOARD | <span style="color: #22c55e;">WILLCOM KESKIN</span></h1>
-        <div style="display: flex; gap: 15px;">
-            <button onclick="filterSchicht('ALLE')" style="background: #38bdf8; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer;">ALLE</button>
-            <button onclick="loadAdminDashboard()" style="background: #1e293b; color: white; border: 1px solid #38bdf8; padding: 10px 20px; cursor: pointer;">GÜNCELLE</button>
+<div class="dashboard-card" id="adminPanel" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.4); background: #0f172a; margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h1 style="margin: 0; font-size: 28px; color: white;">APK Live Dashboard</h1>
+            <span id="adminUserDisplay" style="color: var(--primary); font-size: 14px; font-weight: bold;">Willkommen, Keskin (Admin Mode)</span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <div class="filter-buttons" style="margin: 0;">
+                <button class="schicht-btn active" id="btnAlle" onclick="filterSchicht('ALLE')">ALLE</button>
+                <button class="schicht-btn" id="btnAFilter" onclick="filterSchicht('A')">A</button>
+                <button class="schicht-btn" id="btnBFilter" onclick="filterSchicht('B')">B</button>
+                <button class="schicht-btn" id="btnCFilter" onclick="filterSchicht('C')">C</button>
+            </div>
+            <button class="main-btn" style="width: auto; margin: 0; padding: 0 20px;" onclick="loadAdminDashboard()">
+                AKTUALISIEREN
+            </button>
         </div>
     </div>
+    <div id="dashboardLoading" style="text-align: center; margin-top: 20px; color: var(--primary); font-weight: bold;">
+        Berichte werden geladen... ⏳
+    </div>
+</div>
+
+<div id="reportsContainer" class="reports-grid"></div>
     <div id="dashboardLoading" style="text-align: center; padding: 10px; color: #38bdf8;">Laden... ⏳</div>
     <div id="reportsContainer" style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;"></div>
 </body>

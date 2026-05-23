@@ -26,7 +26,24 @@
         font-size:16px;
        }
 
-        select, input { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; font-size: 16px; }
+        select, input {
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#0f172a;
+    color:white;
+    box-sizing:border-box;
+    font-size:16px;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    outline:none;
+    height:50px;
+    }
+        select{
+            overflow:hidden;
+    }
         
         .schicht-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
         .schicht-btn { padding: 14px; background: #0f172a; border: 1px solid #334155; border-radius: 10px; color: white; cursor: pointer; font-weight: bold; font-size: 16px; }

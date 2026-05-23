@@ -78,7 +78,7 @@
 
 .admin-right{
     display:flex;
-    gap:15px;
+    gap:18px;
     align-items:flex-start;
 }
 
@@ -87,8 +87,8 @@
     background:rgba(56,189,248,0.05);
     border:1px solid rgba(56,189,248,0.25);
     border-radius:14px;
-    padding:12px;
-    width:540px;
+    padding:14px;
+    width:520px;
 }
 
 .filter-buttons{
@@ -226,53 +226,62 @@
 
         <div class="admin-right">
 
-            <div class="manager-box">
+    <!-- SUPER MANAGER -->
 
-                <label>
-                    Rechte verwalten (Super-Manager)
-                </label>
+    <div class="manager-box">
 
-                <div style="display:flex;gap:8px;">
+        <label>
+            RECHTE VERWALTEN (SUPER-MANAGER)
+        </label>
 
-                    <select id="rightsSelect"
-        style="width:100%; min-width:360px;">
-                    <button class="sub-btn"
-                            onclick="grantSuperManagerRights()">
-                        +
-                    </button>
+        <div style="display:flex; gap:10px;">
 
-                </div>
+            <select id="rightsSelect"
+                    style="flex:1; min-width:320px;">
+            </select>
 
-            </div>
+            <button class="sub-btn"
+                    onclick="grantSuperManagerRights()">
+                +
+            </button>
 
-            <div class="schicht-box">
+        </div>
 
-                <label>
-                    Rechte verwalten (Schichtleiter)
-                </label>
+    </div>
 
-                <div style="display:flex;gap:8px;">
+    <!-- SCHICHTLEITER -->
 
-                    <div class="schicht-box">
+    <div class="schicht-box">
 
-    <label>
-        Rechte verwalten (Schichtleiter)
-    </label>
+        <label>
+            RECHTE VERWALTEN (SCHICHTLEITER)
+        </label>
 
-    <div style="display:flex;gap:8px;">
+        <div style="display:flex; gap:10px;">
 
-        <select id="schichtleiterSelect"
-                style="width:100%; min-width:260px;">
-        </select>
+            <select id="schichtleiterSelect"
+                    style="flex:1; min-width:260px;">
+            </select>
 
-        <select id="schichtSelect"
-                style="max-width:80px;">
+            <select id="schichtSelect"
+                    style="width:90px;">
 
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
 
-        </select>
+            </select>
+
+            <button class="sub-btn"
+                    onclick="saveSchichtleiter()">
+                +
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
         <button class="sub-btn"
                 onclick="saveSchichtleiter()">

@@ -477,6 +477,34 @@ async function enterApp(u) {
             document.getElementById('rightsManagementBox').style.display = 'block';
             document.getElementById('currentManagersList').innerText = "Berechtigte Manager: " + superManagersList.join(', ');
         }
+        const rightsSelect =
+document.getElementById("rightsSelect");
+
+const schichtleiterSelect =
+document.getElementById("schichtleiterSelect");
+
+rightsSelect.innerHTML = "";
+schichtleiterSelect.innerHTML = "";
+
+Object.keys(initialDB).forEach(u => {
+
+    const opt1 =
+    document.createElement("option");
+
+    opt1.value = u;
+    opt1.textContent = u;
+
+    rightsSelect.appendChild(opt1);
+
+    const opt2 =
+    document.createElement("option");
+
+    opt2.value = u;
+    opt2.textContent = u;
+
+    schichtleiterSelect.appendChild(opt2);
+
+});
         loadAdminDashboard();
     } else {
         document.getElementById('mainApp').style.display='block'; 

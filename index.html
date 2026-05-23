@@ -261,46 +261,70 @@
     <button id="mainSendBtn" class="main-btn" onclick="processReport()">🚀 SPEICHERN & SENDEN</button>
 </div>
 
-<div class="dashboard-card" id="adminPanel" style="padding: 10px; max-width: 100%; border-radius: 15px;">
+<div class="dashboard-card" id="adminPanel" style="padding: 20px; max-width: 100%; border-radius: 15px;">
 
-    <div style="display: grid; grid-template-columns: 320px 1fr; gap: 12px; margin-bottom: 10px;">
+    <div style="display: grid; grid-template-columns: 350px 1fr; gap: 25px; margin-bottom: 20px;">
         
-        <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
             <div>
-                <h1 style="margin: 0; font-size: 26px; color: white; line-height: 1;">APK Live Dashboard</h1>
-                <span id="adminUserDisplay" style="color: var(--primary); font-size: 12px; font-weight: bold;"></span>
+                <h1 style="margin: 0; font-size: 30px; color: white; line-height: 1.1;">APK Live Dashboard</h1>
+                <span id="adminUserDisplay" style="color: var(--primary); font-size: 13px; font-weight: bold; opacity: 0.8;">Willkommen, Keskin (Admin Mode)</span>
             </div>
-
-            <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid var(--success); padding: 5px; border-radius: 6px; text-align: center;">
-                <strong style="color: var(--success); font-size: 12px; letter-spacing: 1px;">WILLCOM KESKİN</strong>
-            </div>
-
-            <div style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); padding: 8px; border-radius: 10px;">
-                <label style="margin: 0 0 5px 0; font-size: 11px; display: block;">RECFAVATIM ŞEKLIGHT</label>
-                <div style="display: flex; gap: 4px;">
-                    <div class="custom-select-wrap" style="height: 34px; flex: 1;">
-                        <select id="schichtleiterSelect" style="height: 34px; font-size: 13px;"></select>
-                    </div>
-                    <select id="schichtSelect" style="width: 55px; height: 34px; background:#0f172a; color:white; border-radius:8px; border:1px solid #334155;">
-                        <option>A</option><option>B</option><option>C</option>
-                    </select>
-                    <button class="sub-btn" style="width: 40px; height: 34px; min-width: 40px; padding:0;" onclick="saveSchichtleiter()">ABC</button>
-                </div>
+            <div style="border: 1px solid var(--success); padding: 10px; border-radius: 8px; text-align: center; background: rgba(34, 197, 94, 0.05);">
+                <strong style="color: var(--success); font-size: 14px; letter-spacing: 1px;">WILLCOM KESKIN</strong>
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02); border: 1px solid #334155; padding: 10px; border-radius: 10px;">
-            <label style="margin: 0; text-align: center; font-size: 12px; color: var(--primary);">RECFAVATIM SUPER MANAGER</label>
-            <div style="display: flex; gap: 8px; align-items: center; justify-content: center; margin-top: 8px;">
-                <div class="custom-select-wrap" style="height: 36px; width: 220px;">
-                    <select id="rightsSelect" style="height: 36px; font-size: 13px;"></select>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid #334155; padding: 15px; border-radius: 12px;">
+                <label style="color: var(--primary); font-size: 12px; font-weight: bold; margin-bottom: 10px; display: block;">RECHTE VERWALTEN (SUPER-MANAGER)</label>
+                <div style="display: flex; gap: 10px;">
+                    <div class="custom-select-wrap" style="flex: 1; height: 48px;">
+                        <select id="rightsSelect" style="height: 48px; width: 100%; font-size: 15px; padding-left: 15px; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 8px;"></select>
+                    </div>
+                    <button class="main-btn" style="width: 160px; margin: 0; height: 48px; font-size: 13px; font-weight: bold;" onclick="grantSuperManagerRights()">BERECHTIGEN</button>
                 </div>
-                <button class="main-btn" style="width: 120px; margin: 0; padding: 0; height: 36px; font-size: 12px;" onclick="grantSuperManagerRights()">YETKİ VER</button>
             </div>
-            <div id="currentManagersList" style="font-size: 10px; color: #64748b; text-align: center; margin-top: 5px;"></div>
+
+            <div style="background: rgba(56, 189, 248, 0.03); border: 1px solid rgba(56, 189, 248, 0.2); padding: 15px; border-radius: 12px;">
+                <label style="color: var(--primary); font-size: 12px; font-weight: bold; margin-bottom: 10px; display: block;">RECHTE VERWALTEN (SCHICHTLEITER)</label>
+                <div style="display: flex; gap: 8px;">
+                    <div class="custom-select-wrap" style="flex: 1; height: 48px;">
+                        <select id="schichtleiterSelect" style="height: 48px; width: 100%; font-size: 15px; padding-left: 15px; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 8px;"></select>
+                    </div>
+                    <select id="schichtSelect" style="width: 80px; height: 48px; background: #0f172a; color: white; border: 1px solid #475569; border-radius: 8px; text-align: center; font-weight: bold; font-size: 16px;">
+                        <option>A</option><option>B</option><option>C</option>
+                    </select>
+                    <button class="sub-btn" style="width: 80px; height: 48px; min-width: 80px; font-weight: bold; background: #1e40af; border-radius: 8px;" onclick="saveSchichtleiter()">ABC</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
+    <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 12px 20px; border-radius: 12px; border: 1px solid #334155;">
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <span style="color: #64748b; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Filter:</span>
+            <div class="filter-buttons" style="margin: 0; display: flex; gap: 8px;">
+                <button class="schicht-btn active" id="btnAlle" style="padding: 8px 20px; font-size: 13px; border-radius: 6px;" onclick="filterSchicht('ALLE')">ALLE</button>
+                <button class="schicht-btn" id="btnAFilter" style="padding: 8px 15px; font-size: 13px; border-radius: 6px;" onclick="filterSchicht('A')">A</button>
+                <button class="schicht-btn" id="btnBFilter" style="padding: 8px 15px; font-size: 13px; border-radius: 6px;" onclick="filterSchicht('B')">B</button>
+                <button class="schicht-btn" id="btnCFilter" style="padding: 8px 15px; font-size: 13px; border-radius: 6px;" onclick="filterSchicht('C')">C</button>
+            </div>
+        </div>
+
+        <button class="main-btn" style="width: auto; margin: 0; padding: 0 30px; height: 45px; font-size: 14px; background: var(--primary); color: #000; font-weight: bold; border-radius: 8px;" onclick="loadAdminDashboard()">
+            🔄 AKTUALISIEREN
+        </button>
+    </div>
+
+    <div id="dashboardLoading" style="text-align:center; color:var(--primary); margin:20px 0; font-size:14px; font-weight: 500;">
+        Berichte werden geladen... ⏳
+    </div>
+    <div id="reportsContainer" class="reports-grid" style="margin-top: 10px;"></div>
+
+</div>
     <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 6px 12px; border-radius: 8px; border: 1px solid #334155;">
         <div style="display: flex; gap: 8px; align-items: center;">
             <button class="sub-btn" style="background: #334155; padding: 5px 12px; font-size: 12px;" onclick="alert('ALABCS Aktif')">ALABCS</button>

@@ -261,14 +261,16 @@
     <button id="mainSendBtn" class="main-btn" onclick="processReport()">🚀 SPEICHERN & SENDEN</button>
 </div>
 
-<div id="adminPanel" style="padding: 20px; background: #0f172a; border-bottom: 2px solid #38bdf8; color: white;">
-    <h2 style="margin: 0;">Dashboard | <span style="color: #22c55e;">WILLCOM KESKIN</span></h2>
-    <div style="margin-top: 15px; display: flex; gap: 15px;">
-        <button onclick="filterSchicht('ALLE')" style="background: #38bdf8; border: none; padding: 8px 20px; cursor: pointer; font-weight: bold;">ALLE</button>
-        <button onclick="loadAdminDashboard()" style="background: #334155; color: white; border: 1px solid #475569; padding: 8px 20px; cursor: pointer;">🔄 GÜNCELLE</button>
-        <span id="dashboardLoading" style="color: #38bdf8; align-self: center;">Laden... ⏳</span>
+<div id="adminPanel" style="padding: 15px; background: #0f172a; border-bottom: 2px solid #38bdf8; color: white;">
+    <h2 style="margin: 0; font-size: 20px;">Dashboard | <span style="color: #22c55e;">WILLCOM KESKIN</span></h2>
+    <div style="margin-top: 10px; display: flex; gap: 10px;">
+        <button onclick="filterSchicht('ALLE')" style="background: #38bdf8; border: none; padding: 5px 15px; cursor: pointer; font-weight: bold; color: black;">ALLE</button>
+        <button onclick="loadAdminDashboard()" style="background: #334155; color: white; border: 1px solid #475569; padding: 5px 15px; cursor: pointer;">🔄 GÜNCELLE</button>
+        <span id="dashboardLoading" style="color: #38bdf8; align-self: center; font-size: 12px;">Laden... ⏳</span>
     </div>
 </div>
+
+<div id="reportsContainer" style="padding: 15px;"></div>
 
 <div id="reportsContainer" style="padding: 20px;"></div>
 

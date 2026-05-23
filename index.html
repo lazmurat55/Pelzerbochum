@@ -256,20 +256,20 @@
             RECHTE VERWALTEN (SUPER-MANAGER)
         </label>
 
-        <div style="display:flex; gap:10px;">
+        <div class="manager-row">
 
-            <select id="rightsSelect"
-                    style="flex:1; min-width:320px;">
-            </select>
+    <div class="manager-select-wrap">
 
-            <button class="sub-btn"
-                    onclick="grantSuperManagerRights()">
-                +
-            </button>
-
-        </div>
+        <select id="rightsSelect"></select>
 
     </div>
+
+    <button class="sub-btn"
+            onclick="grantSuperManagerRights()">
+        +
+    </button>
+
+</div>
 
     <!-- SCHICHTLEITER -->
 
@@ -279,29 +279,30 @@
             RECHTE VERWALTEN (SCHICHTLEITER)
         </label>
 
-        <div style="display:flex; gap:10px;">
+        <div class="manager-row">
 
-            <select id="schichtleiterSelect"
-                    style="flex:1; min-width:260px;">
-            </select>
+    <div class="manager-select-wrap">
 
-            <select id="schichtSelect"
-                    style="width:90px;">
-
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
-
-            </select>
-
-            <button class="sub-btn"
-                    onclick="saveSchichtleiter()">
-                +
-            </button>
-
-        </div>
+        <select id="schichtleiterSelect"></select>
 
     </div>
+
+    <select id="schichtSelect"
+            style="width:90px;">
+
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+
+    </select>
+
+    <button class="sub-btn"
+            onclick="saveSchichtleiter()">
+        +
+    </button>
+  </div>
+
+</div>
 
 </div>
 

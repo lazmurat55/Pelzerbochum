@@ -226,26 +226,83 @@ function setInitialTodayDate() {
     }
 }
 
-async function checkLogin() {
-    const btn = document.getElementById('loginBtn'); const u = document.getElementById('userInp').value.trim(); const p = document.getElementById('passInp').value.trim();
-    if(!initialDB[u]) { document.getElementById('loginError').innerText = "⚠️ Benutzer nicht gefunden!"; document.getElementById('loginError').style.display = 'block'; return; }
-    btn.innerText = "Check... ⏳"; document.getElementById('loginError').style.display = 'none';
-    try {
-        const response = await fetch(scriptURL); 
-        const cloudDB = await response.json();
-        if (cloudDB && cloudDB[u]) {
-            if (cloudDB[u] === p) { enterApp(u); return; } 
-            else { document.getElementById('loginError').innerText = "⚠️ Falsches Passwort!"; document.getElementById('loginError').style.display = 'block'; btn.innerText = "ANMELDEN"; return; }
-        }
-    } catch(e) {}
-    
-    if (initialDB[u] === p) {
-        enterApp(u);
-    } else {
-        document.getElementById('loginError').innerText = "⚠️ Zugangsdaten falsch!";
-        document.getElementById('loginError').style.display = 'block';
+function checkLogin() {
+
+    const user = document.getElementById("userInp").value.trim();
+    const pass = document.getElementById("passInp").value.trim();
+    const errorBox = document.getElementById("loginError");
+
+    errorBox.style.display = "none";
+
+    if (!user || !pass) {
+
+        errorBox.innerText = "⚠️ Bitte alles eingeben!";
+        errorBox.style.display = "block";
+        return;
     }
-    btn.innerText = "ANMELDEN";
+
+    // kullanıcı kontrolü
+    if (!initialDB[user]) {
+
+        errorBox.innerText = "⚠️ Benutzer nicht gefunden!";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    // kayıtlı şifre
+    const savedPass = localStorage.getItem("apg_pass_" + user);
+
+    // ilk giriş
+    if (!savedPass) {
+
+        if (pass === initialDB[user]) {
+
+            loggedInUser = user;
+
+            document.getElementById("loginScreen").style.display = "none";
+            document.getElementById("setPassScreen").style.display = "flex";
+
+        } else {
+
+            errorBox.innerText = "⚠️ Personalnummer falsch!";
+            errorBox.style.display = "block";
+        }
+
+        return;
+    }
+
+    // normal giriş
+    if (pass === savedPass) {
+
+        loggedInUser = user;
+
+        document.getElementById("loginScreen").style.display = "none";
+
+        // manager
+        if (superManagersList.includes(user)) {
+
+            document.getElementById("adminPanel").style.display = "block";
+
+            document.getElementById("adminUserDisplay").innerText =
+                "Angemeldet als Manager: " + user;
+
+            if (typeof loadAdminDashboard === "function") {
+                loadAdminDashboard();
+            }
+
+        } else {
+
+            document.getElementById("mainApp").style.display = "block";
+
+            document.getElementById("currentUserDisplay").innerText =
+                "Angemeldet als: " + user;
+        }
+
+    } else {
+
+        errorBox.innerText = "⚠️ Passwort falsch!";
+        errorBox.style.display = "block";
+    }
 }
 
 async function saveNewPassword() {
